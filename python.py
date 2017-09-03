@@ -1,9 +1,15 @@
 import serial
-from pymouse import PyMouse
-from pykeyboard import PyKeyboard
+import pyautogui
+#from pykeyboard import PyKeyboard
 
-k = PyKeyboard()
-
+#k = PyKeyboard()
 ser = serial.Serial('/dev/ttyACM0', 9600)
 while True:
-    print ser.readline()
+    p = ser.readline()
+    print p
+    if (p[:4] == 'jump'):
+        print "working"
+        pyautogui.press('space')
+        #k.tap_key(k.space_key)
+    else:
+        print "its on else loop"
